@@ -4,6 +4,7 @@ import static java.lang.Integer.reverse;
 
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.IntStream;
 
 /**
  * Lily likes to play games with integers. She has created a new game where she determines the
@@ -54,18 +55,17 @@ public class Solution {
 
   // Complete the beautifulDays function below.
   static int beautifulDays(int i, int j, int k) {
-    for (Integer l = i; l < j - i; l++) {
-      // Get an array of the digits of the current work item
-      char[] startArray = l.toString().toCharArray();
 
-      // Get the index of what will be the first char in the new array
-      int lastIndexOfArray = startArray.length - 1;
+    int reversernum = 0;
 
-      char[] reversedArray = startArray[lastIndexOfArray];
-
+    for (; i <= j; i++) {
+      reversernum = reversernum * 10;
+      reversernum = reversernum + i % 10;
+      i = i / 10;
     }
-  }
 
+    return reversernum;
+  }
 
 
   private static final Scanner scanner = new Scanner(System.in);
