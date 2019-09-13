@@ -55,16 +55,23 @@ public class Solution {
 
   // Complete the beautifulDays function below.
   static int beautifulDays(int i, int j, int k) {
-
-    int reversernum = 0;
-
+    int numberOfBeautifulDays = 0;
     for (; i <= j; i++) {
-      reversernum = reversernum * 10;
-      reversernum = reversernum + i % 10;
-      i = i / 10;
+      int originalNumber = i;
+      // make a place to store the reversed number
+      int reversednum = 0;
+      for (int temp = i; temp !=0; ) {
+        // Get the reversed number
+        reversednum = reversednum * 10;
+        reversednum = reversednum + temp % 10;
+        // increment the iterator
+        temp = temp / 10;
+      }
+      if ((originalNumber - reversednum) % k == 0) {
+        numberOfBeautifulDays++;
+      }
     }
-
-    return reversernum;
+    return numberOfBeautifulDays;
   }
 
 
