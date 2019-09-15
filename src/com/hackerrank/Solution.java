@@ -1,18 +1,30 @@
 package com.hackerrank;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.Scanner;
+import java.util.*;
+import java.io.*;
 
-public class Solution {
+class Solution{
 
-  private static final Scanner scanner = new Scanner(System.in);
 
-  public static void main(String[] args) throws IOException {
-    int n = scanner.nextInt();
-    scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
-    scanner.close();
+  public static void main(String []argh){
+    Scanner in = new Scanner(System.in);
+    Map<String, Integer> phoneBook = new HashMap<>();
+    int n = in.nextInt();
+    for(int i = 0; i < n; i++){
+      String name = in.next();
+      int phone = in.nextInt();
+      // Write code here
+      phoneBook.put(name, phone);
+    }
+    while(in.hasNext()){
+      String s = in.next();
+      // Write code here
+      if(phoneBook.get(s) != null) {
+        System.out.println(s + "=" + phoneBook.get(s));
+      } else {
+        System.out.println("Not found");
+      }
+    }
+    in.close();
   }
 }
-
