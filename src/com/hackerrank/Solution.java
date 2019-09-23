@@ -12,6 +12,14 @@ class Difference {
   public int maximumDifference;
 
   // Add your code here
+  Difference(int[] elements) {
+    this.elements = elements;
+  }
+
+  void computeDifference() {
+    Arrays.sort(this.elements);
+    this.maximumDifference = this.elements[this.elements.length - 1] - this.elements[0];
+  }
 
 } // End of Difference class
 
