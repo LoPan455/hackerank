@@ -1,18 +1,35 @@
 package com.hackerrank;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.Scanner;
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+
+class Difference {
+  private int[] elements;
+  public int maximumDifference;
+
+  // Add your code here
+
+} // End of Difference class
 
 public class Solution {
 
-  private static final Scanner scanner = new Scanner(System.in);
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    int n = sc.nextInt();
+    int[] a = new int[n];
+    for (int i = 0; i < n; i++) {
+      a[i] = sc.nextInt();
+    }
+    sc.close();
 
-  public static void main(String[] args) throws IOException {
-    int n = scanner.nextInt();
-    scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
-    scanner.close();
+    Difference difference = new Difference(a);
+
+    difference.computeDifference();
+
+    System.out.print(difference.maximumDifference);
   }
 }
-
