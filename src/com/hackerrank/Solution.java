@@ -1,18 +1,47 @@
 package com.hackerrank;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.Scanner;
+import java.io.*;
+import java.util.*;
 
-public class Solution {
-
-  private static final Scanner scanner = new Scanner(System.in);
-
-  public static void main(String[] args) throws IOException {
-    int n = scanner.nextInt();
-    scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
-    scanner.close();
+class Node {
+  int data;
+  Node next;
+  Node(int d) {
+    data = d;
+    next = null;
   }
 }
 
+class Solution {
+
+  public static Node insert(Node head,int data) {
+    //Complete this method
+    if (head != null) {
+      head.next = insert(head.next, data);
+    } else {
+      head = new Node(data);
+    }
+    return head;
+  }
+
+  public static void display(Node head) {
+    Node start = head;
+    while(start != null) {
+      System.out.print(start.data + " ");
+      start = start.next;
+    }
+  }
+
+  public static void main(String args[]) {
+    Scanner sc = new Scanner(System.in);
+    Node head = null;
+    int N = sc.nextInt();
+
+    while(N-- > 0) {
+      int ele = sc.nextInt();
+      head = insert(head,ele);
+    }
+    display(head);
+    sc.close();
+  }
+}
