@@ -1,18 +1,47 @@
 package com.hackerrank;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.Scanner;
+import com.sun.xml.internal.ws.api.model.wsdl.WSDLOutput;
+import java.util.*;
+import java.io.*;
 
-public class Solution {
+class InvalidNumberException extends Exception {
 
-  private static final Scanner scanner = new Scanner(System.in);
+  @Override
+  public String getMessage() {
+        return "n and p should be non-negative";
+  }
+}
 
-  public static void main(String[] args) throws IOException {
-    int n = scanner.nextInt();
-    scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
-    scanner.close();
+class Calculator {
+  int power(int n, int p) throws InvalidNumberException {
+      if (n >= 0 && p >= 0) {
+        return (int) Math.pow(n, p);
+      } else {
+        throw new InvalidNumberException();
+      }
+    }
+  }
+
+class Solution{
+
+  public static void main(String[] args) {
+
+    Scanner in = new Scanner(System.in);
+    int t = in.nextInt();
+    while (t-- > 0) {
+
+      int n = in.nextInt();
+      int p = in.nextInt();
+      Calculator myCalculator = new Calculator();
+      try {
+        int ans = myCalculator.power(n, p);
+        System.out.println(ans);
+      }
+      catch (Exception e) {
+        System.out.println(e.getMessage());
+      }
+    }
+    in.close();
   }
 }
 
