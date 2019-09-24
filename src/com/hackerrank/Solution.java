@@ -1,18 +1,21 @@
 package com.hackerrank;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.Scanner;
+import java.io.*;
+import java.sql.SQLOutput;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
 
 public class Solution {
 
-  private static final Scanner scanner = new Scanner(System.in);
-
-  public static void main(String[] args) throws IOException {
-    int n = scanner.nextInt();
-    scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
-    scanner.close();
+  public static void main(String[] args) {
+    Scanner in = new Scanner(System.in);
+    String S = in.next();
+    try {
+      System.out.println(Integer.parseInt(S));
+    } catch (Exception e) {
+      System.out.println("Bad String");
+    }
   }
 }
-
