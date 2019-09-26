@@ -1,18 +1,28 @@
 package com.hackerrank;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.Scanner;
+import java.io.*;
+import java.util.*;
 
-public class Solution {
+interface AdvancedArithmetic{
+  int divisorSum(int n);
+}
+class Calculator implements AdvancedArithmetic {
+  public int divisorSum(int n) {
+    return 0;
+  }
+}
 
-  private static final Scanner scanner = new Scanner(System.in);
+class Solution {
 
-  public static void main(String[] args) throws IOException {
-    int n = scanner.nextInt();
-    scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
-    scanner.close();
+  public static void main(String[] args) {
+    Scanner scan = new Scanner(System.in);
+    int n = scan.nextInt();
+    scan.close();
+
+    AdvancedArithmetic myCalculator = new Calculator();
+    int sum = myCalculator.divisorSum(n);
+    System.out.println("I implemented: " + myCalculator.getClass().getInterfaces()[0].getName() );
+    System.out.println(sum);
   }
 }
 
