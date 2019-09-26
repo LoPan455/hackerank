@@ -7,8 +7,16 @@ interface AdvancedArithmetic{
   int divisorSum(int n);
 }
 class Calculator implements AdvancedArithmetic {
+
   public int divisorSum(int n) {
-    return 0;
+    int result = 0;
+    LinkedList<Integer> divisors = new LinkedList<Integer>();
+    for (int i = 0; i <= n ; i++) {
+      if (i > 0 && n % i == 0) {
+        result = result + i;
+      }
+    }
+    return result;
   }
 }
 
