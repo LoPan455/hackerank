@@ -2,53 +2,63 @@ package com.hackerrank.thirtydaysofcode;
 
 import java.util.Scanner;
 
-class Node{
-  Node left,right;
-  int data;
-  Node(int data){
-    this.data=data;
-    left=right=null;
-  }
-}
-
 public class day22 {
 
-  public static int getHeight(Node root){
-    //Write your code here
-    // Let's start with height of 1.  there would be one node, and height would be 0.
+    static class Node {
+        Node left, right;
+        int data;
 
-  }
-
-  public static Node insert(Node root,int data){
-    if(root==null){
-      return new Node(data);
+        Node(int data) {
+            this.data = data;
+            left = right = null;
+        }
     }
-    else{
-      Node cur;
-      if(data<=root.data){
-        cur=insert(root.left,data);
-        root.left=cur;
-      }
-      else{
-        cur=insert(root.right,data);
-        root.right=cur;
-      }
-      return root;
+
+    public static int height = 0;
+
+    public static int getHeight(Node root) {
+        // write your code here
+
+        if (root.left == null && root.right == null) {
+            return height;
+        } else {
+            height++;
+            getHeight(root.left);
+            getHeight(root.right);
+        }
+        return 0;
     }
-  }
 
-
-
-  public static void main(String[] args) {
-    Scanner sc=new Scanner(System.in);
-    int T=sc.nextInt();
-    Node root=null;
-    while(T-->0){
-      int data=sc.nextInt();
-      root=insert(root,data);
+    public static Node insert(Node root,int data){
+        if(root==null){
+            return new Node(data);
+        }
+        else{
+            Node cur;
+            if(data<=root.data){
+                cur=insert(root.left,data);
+                root.left=cur;
+            }
+            else{
+                cur=insert(root.right,data);
+                root.right=cur;
+            }
+            return root;
+        }
     }
-    int height=getHeight(root);
-    System.out.println(height);
-  }
+    public static void main(String args[]){
+        Scanner sc=new Scanner(System.in);
+        int T=sc.nextInt();
+        Node root=null;
+        while(T-->0){
+            int data=sc.nextInt();
+            root=insert(root,data);
+        }
+        int height=getHeight(root);
+        System.out.println(height);
+    }
+
+
+
 
 }
